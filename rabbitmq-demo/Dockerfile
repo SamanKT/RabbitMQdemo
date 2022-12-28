@@ -5,6 +5,7 @@ RUN mvn dependency:go-offline -B
 COPY src src
 RUN mvn install -DskipTests
 
+
 FROM openjdk:17
 COPY --from=build-maven maven/target/*.jar app.jar
 ENTRYPOINT ["sh", "-c", "java -jar /app.jar"] 
